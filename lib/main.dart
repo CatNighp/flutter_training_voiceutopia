@@ -12,6 +12,7 @@ class MainApp extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
     final deviceSizePlaceholder = deviceSize.width / 2;
     final deviceSizeText = deviceSizePlaceholder / 2;
+    final deviceSizeHeight = (deviceSize.height / 2) + deviceSizeText + 32;
     return MaterialApp(
       home: Scaffold(
         body: Stack(
@@ -58,7 +59,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 80,
+              top: deviceSizeHeight + 80,
               left: 0,
               right: 0,
               child: Row(
