@@ -20,16 +20,16 @@ class MainApp extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: deviceSizePlaceholder,
                     height: deviceSizePlaceholder,
-                    child: Placeholder(),
+                    child: const Placeholder(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         alignment: Alignment.center,
                         width: deviceSizeText,
                         child: Text(
@@ -41,7 +41,7 @@ class MainApp extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         alignment: Alignment.center,
                         width: deviceSizeText,
                         child: Text(
