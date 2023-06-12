@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yumemi_weather/yumemi_weather.dart';
 
 void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _MainAppState createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  final yumemiWeather = YumemiWeather();
+  late String weather;
+
+  @override
+  void initState() {
+    super.initState();
+    weather = '';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +41,15 @@ class MainApp extends StatelessWidget {
                   SizedBox(
                     width: deviceSizePlaceholder,
                     height: deviceSizePlaceholder,
-                    child: const Placeholder(),
+
+                    child: SvgPicture.asset(
+                      'assets/images/$weather',
+                      width: deviceSizePlaceholder,
+                      height: deviceSizePlaceholder,
+                      placeholderBuilder: (context) {
+                        return const Placeholder();
+                      },
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +108,11 @@ class MainApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: deviceSizeText,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          weather = '${yumemiWeather.fetchSimpleWeather()}.svg';
+                        });
+                      },
                       child: Text(
                         'Reload',
                         style: Theme.of(context)
