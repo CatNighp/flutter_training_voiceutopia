@@ -5,7 +5,7 @@ on:
     types: [ opened, ready_for_review ]
 
 env:
-  REVIEWERS: 'https://github.com/Naoki-Hidaka'
+  REVIEWERS: 'Naoki-Hidaka'
 
 jobs:
   assign:

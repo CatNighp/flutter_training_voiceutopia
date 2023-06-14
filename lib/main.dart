@@ -42,6 +42,7 @@ class _MainAppState extends State<MainApp> {
                   SizedBox(
                     width: deviceSizePlaceholder,
                     height: deviceSizePlaceholder,
+
                     child: SvgPicture.asset(
                       'assets/images/$weather',
                       width: deviceSizePlaceholder,
@@ -50,6 +51,7 @@ class _MainAppState extends State<MainApp> {
                         return const Placeholder();
                       },
                     ),
+
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
