@@ -115,7 +115,36 @@ class _MainAppState extends State<MainApp> {
                   child: TextButton(
                     onPressed: () {
                       setState(() {
-                        weather = '${yumemiWeather.fetchSimpleWeather()}.svg';
+                        try {
+                          weather =
+                              '${yumemiWeather.fetchThrowsWeather("")}.svg';
+                          // ignore: avoid_catches_without_on_clauses
+                        } catch (e) {
+                          // ignore: inference_failure_on_function_invocation
+                          showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('エラったよ'),
+                                actions: [
+                                  GestureDetector(
+                                    child: Text(
+                                      'OK',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge
+                                          ?.copyWith(color: Colors.blue),
+                                    ),
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       });
                     },
                     child: Text(
@@ -135,6 +164,7 @@ class _MainAppState extends State<MainApp> {
     );
   }
 }
+
 mixin GreenPageMixin<T extends StatefulWidget> on State<T> {
   void navigatorGreen() {
     Future.delayed(const Duration(milliseconds: 500), () {
@@ -147,6 +177,7 @@ mixin GreenPageMixin<T extends StatefulWidget> on State<T> {
       });
     });
   }
+
   Widget buildGreenPage(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.green,
