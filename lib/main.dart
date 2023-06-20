@@ -135,26 +135,38 @@ class _MainAppState extends State<MainApp> {
     );
   }
 }
-
-class GreenPage extends StatelessWidget {
-  const GreenPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+mixin GreenPageMixin<T extends StatefulWidget> on State<T> {
+  void navigatorGreen() {
     Future.delayed(const Duration(milliseconds: 500), () {
       Navigator.push(
         context,
         // ignore: inference_failure_on_instance_creation
-        MaterialPageRoute(
-          builder: (context) => const MainApp(),
-        ),
+        MaterialPageRoute(builder: (context) => const MainApp()),
       ).then((value) {
         (context as Element).markNeedsBuild();
       });
     });
+  }
+  Widget buildGreenPage(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.green,
       body: Center(),
     );
+  }
+}
+
+class GreenPage extends StatefulWidget {
+  const GreenPage({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _GreenPageState createState() => _GreenPageState();
+}
+
+class _GreenPageState extends State<GreenPage> with GreenPageMixin<GreenPage> {
+  @override
+  Widget build(BuildContext context) {
+    navigatorGreen();
+    return buildGreenPage(context);
   }
 }
