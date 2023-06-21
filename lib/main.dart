@@ -14,11 +14,10 @@ class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MainAppState createState() => _MainAppState();
+  MainAppState createState() => MainAppState();
 }
 
-class _MainAppState extends State<MainApp> {
+class MainAppState extends State<MainApp> {
   final yumemiWeather = YumemiWeather();
   late String weather;
 
@@ -144,8 +143,7 @@ class GreenPage extends StatelessWidget {
     Future.delayed(const Duration(milliseconds: 500), () {
       Navigator.push(
         context,
-        // ignore: inference_failure_on_instance_creation
-        MaterialPageRoute(
+        MaterialPageRoute<Widget>(
           builder: (context) => const MainApp(),
         ),
       ).then((value) {
