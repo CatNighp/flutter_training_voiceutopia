@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
+import 'dart:convert';
+
+const jsonString = '''
+{
+    "area": "tokyo",
+    "date": "2020-04-01T12:00:00+09:00"
+}''';
 
 void main() {
   runApp(
@@ -28,6 +35,19 @@ class _MainAppState extends State<MainApp> {
     weather = '';
   }
 
+  List<dynamic> weatherArray = ['','**','**'];
+
+  void updateArray(String weatherData) {
+    // ignore: prefer_final_locals, lines_longer_than_80_chars
+    var weatherMap = json.decode(weatherData) as Map<String, dynamic>;
+
+    weatherArray
+      ..clear()
+      ..add(weatherMap['weather_condition'])
+      ..add(weatherMap['max_temperature'])
+      ..add(weatherMap['min_temperature']);
+  }
+
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
@@ -46,7 +66,7 @@ class _MainAppState extends State<MainApp> {
                   width: deviceSizePlaceholder,
                   height: deviceSizePlaceholder,
                   child: SvgPicture.asset(
-                    'assets/images/$weather',
+                    'assets/images/${weatherArray[0]}.svg',
                     width: deviceSizePlaceholder,
                     height: deviceSizePlaceholder,
                     placeholderBuilder: (context) {
@@ -62,7 +82,7 @@ class _MainAppState extends State<MainApp> {
                       alignment: Alignment.center,
                       width: deviceSizeText,
                       child: Text(
-                        '**℃',
+                        '${weatherArray[2]}℃',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge
@@ -74,7 +94,7 @@ class _MainAppState extends State<MainApp> {
                       alignment: Alignment.center,
                       width: deviceSizeText,
                       child: Text(
-                        '**℃',
+                        '${weatherArray[1]}℃',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge
@@ -116,8 +136,8 @@ class _MainAppState extends State<MainApp> {
                     onPressed: () {
                       setState(() {
                         try {
-                          weather =
-                              '${yumemiWeather.fetchThrowsWeather("")}.svg';
+                          weather = yumemiWeather.fetchWeather(jsonString);
+                          updateArray(weather);
                           // ignore: avoid_catches_without_on_clauses
                         } catch (e) {
                           // ignore: inference_failure_on_function_invocation
