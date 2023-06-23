@@ -9,8 +9,11 @@ class WeatherApi {
   factory WeatherApi.fromJson(Map<String, dynamic> json) =>
       _$WeatherApiFromJson(json);
 
+  @JsonKey(name: 'weather_condition')
   final String? weatherCondition;
+  @JsonKey(name: 'max_temperature')
   final int? maxTemperature;
+  @JsonKey(name: 'min_temperature')
   final int? minTemperature;
 
   Map<String, dynamic> toJson() => _$WeatherApiToJson(this);
