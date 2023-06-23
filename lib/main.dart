@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_training/API/weather_api.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
 const jsonString = '''
@@ -35,9 +36,9 @@ class _MainAppState extends State<MainApp> {
     weather = '';
   }
 
-  List<dynamic> weatherArray = ['','**','**'];
-
-  void updateArray(String weatherData) {
+  List<dynamic> weatherArray = ['', '**', '**'];
+/*
+   void updateArray(String weatherData) {
     // ignore: prefer_final_locals, lines_longer_than_80_chars
     var weatherMap = json.decode(weatherData) as Map<String, dynamic>;
 
@@ -46,6 +47,18 @@ class _MainAppState extends State<MainApp> {
       ..add(weatherMap['weather_condition'])
       ..add(weatherMap['max_temperature'])
       ..add(weatherMap['min_temperature']);
+  }
+  */
+
+  void updateArray(String weatherData) {
+    final weatherMap =
+        WeatherApi.fromJson(jsonDecode(weatherData) as Map<String, dynamic>);
+
+    weatherArray
+      ..clear()
+      ..add(weatherMap.weather_condition)
+      ..add(weatherMap.max_temperature)
+      ..add(weatherMap.min_temperature);
   }
 
   @override
