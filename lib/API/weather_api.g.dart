@@ -7,14 +7,14 @@ part of 'weather_api.dart';
 // **************************************************************************
 
 WeatherApi _$WeatherApiFromJson(Map<String, dynamic> json) => WeatherApi(
-      weather_condition: json['weather_condition'] as String?,
-      max_temperature: json['max_temperature'] as int?,
-      min_temperature: json['min_temperature'] as int?,
+      weatherCondition: json['weather_condition'] as String?,
+      maxTemperature: json['max_temperature'] as int?,
+      minTemperature: json['min_temperature'] as int?,
     );
 
 Map<String, dynamic> _$WeatherApiToJson(WeatherApi instance) =>
     <String, dynamic>{
-      'weather_condition': instance.weather_condition,
-      'max_temperature': instance.max_temperature,
-      'min_temperature': instance.min_temperature,
+      'weather_condition': instance.weatherCondition,
+      'max_temperature': instance.maxTemperature,
+      'min_temperature': instance.minTemperature,
     };

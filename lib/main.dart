@@ -37,18 +37,6 @@ class _MainAppState extends State<MainApp> {
   }
 
   List<dynamic> weatherArray = ['', '**', '**'];
-/*
-   void updateArray(String weatherData) {
-    // ignore: prefer_final_locals, lines_longer_than_80_chars
-    var weatherMap = json.decode(weatherData) as Map<String, dynamic>;
-
-    weatherArray
-      ..clear()
-      ..add(weatherMap['weather_condition'])
-      ..add(weatherMap['max_temperature'])
-      ..add(weatherMap['min_temperature']);
-  }
-  */
 
   void updateArray(String weatherData) {
     final weatherMap =
@@ -56,9 +44,9 @@ class _MainAppState extends State<MainApp> {
 
     weatherArray
       ..clear()
-      ..add(weatherMap.weather_condition)
-      ..add(weatherMap.max_temperature)
-      ..add(weatherMap.min_temperature);
+      ..add(weatherMap.weatherCondition)
+      ..add(weatherMap.maxTemperature)
+      ..add(weatherMap.minTemperature);
   }
 
   @override

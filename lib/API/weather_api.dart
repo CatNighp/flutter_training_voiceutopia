@@ -4,14 +4,14 @@ part 'weather_api.g.dart';
 
 @JsonSerializable()
 class WeatherApi {
-  WeatherApi({this.weather_condition, this.max_temperature, this.min_temperature});
+  WeatherApi({this.weatherCondition, this.maxTemperature, this.minTemperature});
 
   factory WeatherApi.fromJson(Map<String, dynamic> json) =>
       _$WeatherApiFromJson(json);
 
-  final String? weather_condition;
-  final int? max_temperature;
-  final int? min_temperature;
+  final String? weatherCondition;
+  final int? maxTemperature;
+  final int? minTemperature;
 
   Map<String, dynamic> toJson() => _$WeatherApiToJson(this);
 }
