@@ -14,8 +14,8 @@ final weatherArrayStateProvider = StateProvider((ref) {
 });
 
 void updateArray(ProviderContainer container, String weatherData) {
-  final weatherMap = 
-  WeatherApi.fromJson(jsonDecode(weatherData) as Map<String, dynamic>);
+  final weatherMap =
+      WeatherApi.fromJson(jsonDecode(weatherData) as Map<String, dynamic>);
 
   final weatherArray = container.read(weatherArrayProvider);
   // ignore: cascade_invocations
@@ -25,7 +25,6 @@ void updateArray(ProviderContainer container, String weatherData) {
     weatherMap.minTemperature,
   ];
 }
-
 
 const jsonString = '''
 {
@@ -86,7 +85,7 @@ class _MainAppState extends State<MainApp> {
                     width: deviceSizePlaceholder,
                     height: deviceSizePlaceholder,
                     child: SvgPicture.asset(
-                     'assets/images/${container.read(weatherArrayProvider).state[0]}.svg',
+                      'assets/images/${container.read(weatherArrayProvider).state[0]}.svg',
                       width: deviceSizePlaceholder,
                       height: deviceSizePlaceholder,
                       placeholderBuilder: (context) {
