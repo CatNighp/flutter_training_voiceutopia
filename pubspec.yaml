@@ -7,11 +7,12 @@ environment:
   sdk: '>=3.0.3 <4.0.0'
 
 dependencies:
-  flutter_svg: ^2.0.6
-
   flutter:
     sdk: flutter
-
+  flutter_riverpod: ^2.3.6
+  flutter_svg: ^2.0.6
+  json_annotation: ^4.8.1
+  riverpod: ^2.3.6
   yumemi_weather:
     git:
       url: https://github.com/yumemi-inc/flutter-training.git
@@ -20,10 +21,11 @@ dependencies:
 
 
 dev_dependencies:
+  blendthink_lints: ^3.0.0
+  build_runner: ^2.4.5
   flutter_test:
     sdk: flutter
-  blendthink_lints: ^3.0.0
-
+  json_serializable: ^6.7.0
 flutter:
   uses-material-design: true
   assets:
