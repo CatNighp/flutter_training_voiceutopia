@@ -14,7 +14,8 @@ final weatherArrayStateProvider = StateProvider((ref) {
 });
 
 void updateArray(ProviderContainer container, String weatherData) {
-  final weatherMap = WeatherApi.fromJson(jsonDecode(weatherData) as Map<String, dynamic>);
+  final weatherMap = 
+  WeatherApi.fromJson(jsonDecode(weatherData) as Map<String, dynamic>);
 
   final weatherArray = container.read(weatherArrayProvider);
   // ignore: cascade_invocations
