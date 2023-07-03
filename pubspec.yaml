@@ -10,12 +10,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.6
+  riverpod: ^2.3.6
   json_annotation: ^4.8.1
   yumemi_weather:
     git:
       url: https://github.com/yumemi-inc/flutter-training.git
       ref: main
       path: packages/yumemi_weather
+  flutter_riverpod: ^2.3.6
 
 
 dev_dependencies:
